@@ -10,16 +10,10 @@ import {
 
 import App from './components/App/App';
 import NotFound from './components/App/NotFound';
-
 import Home from './components/Home/Home';
-
 import ToDoList from './components/ToDoList/ToDoList';
 import NewItem from './components/ToDoList/NewItem';
-
 import ListDefinition from './components/ListDefinition/ListDefinition';
-import Welcome from './components/Welcome/Welcome';
-
-
 import SignUp from './components/SignUp/SignUp';
 import './styles/styles.scss';
 
@@ -29,7 +23,6 @@ render((
       <Switch>
 
         <Route exact path="/" component={Home}/>
-        <Route path="/Welcome" component={Welcome}/>
         <Route path="/listdefinition" component={ListDefinition}/>
         <Route path="/newItem" component={NewItem}/>
 
