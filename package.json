@@ -1,11 +1,11 @@
 {
-  "name": "MERN-boilerplate",
+  "name": "Do_It",
   "version": "1.0.0",
   "description": "Do It",
   "author": "Hamdi Al Sheikha",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/"
+    "url": "git+https://github.com/HamdiSheikha/Do_It"
   },
   "license": "MIT",
   "private": true,
