@@ -1,0 +1,383 @@
+/*
+
+
+.content .section .logo {
+  background: url('./res/logo.png');
+  width: 595px;
+  height: 116px;
+  background-size: cover;
+}
+.content{
+color: #FFFFFF;
+font-family: 'VistaSansOT-Reg';
+}
+.content .section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.content .section.footer {
+  background: #0d1623;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 68px;
+  width:100%;
+} */
+
+.button2{
+  width: 300px;
+}
+
+.btn-login {
+  width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+  font-size: 23px;
+	border: none;
+	font-family: inherit;
+	cursor: pointer;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+
+}
+
+.btn-login:after {
+	content: '';
+	position: absolute;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+
+.btn-3 {
+	background: #b6cc49;
+	color: #fff;
+}
+
+.btn-3:hover {
+	background: #a5c507;
+}
+
+.btn-3:active {
+	background: #f58500;
+	top: 2px;
+}
+
+.btn-3:before {
+	position: absolute;
+	top: 0;
+	line-height: 3;
+	font-size: 140%;
+	width: 60px;
+}
+
+.btn-3e {
+	padding: 25px 120px 25px 60px;
+	overflow: hidden;
+}
+
+.btn-3e:before {
+	left: auto;
+	right: 10px;
+	z-index: 2;
+}
+
+.btn-3e:after {
+	width: 30%;
+	height: 200%;
+	background: rgba(255,255,255,0.2);
+	z-index: 1;
+	right: 0;
+	top: 0;
+	margin: -5px 0 0 -5px;
+
+	transform-origin: 0 0;
+	transform: rotate(-20deg);
+}
+
+.btn-3e:hover:after {
+	width: 40%;
+}
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,700);
+
+.sign-form {
+  max-width: 450px;
+  margin: 0 auto;
+padding: 80px;
+  // positioning context
+  .sign-div {
+    position: relative;
+    background: white;
+    border-bottom: 1px solid #ccc;
+
+    // Looks like placeholder
+    .sign-label {
+      opacity: 0.3;
+      font-weight: bold;
+      position: absolute;
+      top: 22px;
+      left: 50px;
+    }
+
+
+    .sign-text
+     {
+      width: 100%;
+      border: 0;
+      padding: 20px 20px 20px 50px;
+      background: #eee;
+
+      &:focus {
+
+        // removing default focus style
+        outline: 0;
+        // adding new one
+        background: white;
+
+        & + .sign-label {
+          opacity: 0;
+        }
+      }
+
+      &:valid {
+        background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg);
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: 20px 20px;
+        & + .sign-label {
+          opacity: 0;
+        }
+      }
+
+      &:invalid:not(:focus):not(:placeholder-shown) {
+        background: pink;
+        & + .sign-label {
+          opacity: 0;
+        }
+      }
+
+      &:invalid:focus:not(:placeholder-shown) {
+        & ~ .requirements {
+          max-height: 200px;
+          padding: 0 30px 20px 50px;
+        }
+      }
+
+    }
+
+    .requirements {
+      padding: 0 30px 0 50px;
+      color: #999;
+      max-height: 0;
+      transition: 0.28s;
+      overflow: hidden;
+      color: red;
+      font-style: italic;
+    }
+
+  }
+
+  .sign-Btn {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+    background: #41D873;
+    color: white;
+    border: 0;
+    padding: 20px;
+    font-size: 1.2rem;
+  }
+
+}
+
+body {
+  background: #eee;
+  font-family: 'PT Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+}
+
+.error-msg{
+
+}
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+.alert-success{
+  padding: 20px;
+  background-color: #b6cc49;
+  color: white;
+}
+.input-sign {
+  width: 350px;
+  padding: 10px 5%;
+  text-align: center;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #cbd987;
+  transition: box-shadow 0.5s ease;
+
+  &:focus, &:active {
+    box-shadow: 0 0 10px #cbd987;
+  }
+}
+// navigation bar
+.menu-nav {
+
+  background-color: #ecf0f1;
+  border-radius: 36px;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.3);
+}
+.navigation-bar {
+  ul {
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+.navbarLogo{
+  margin-right: 10px;
+}
+.navbarAbout{
+
+  margin-right: 10px;
+}
+.navbarSignUp{
+
+  margin-right: 10px;
+}
+  .li-header {
+    float: left;
+    width: 50%;
+
+    &:hover a::before {
+      right: 0;
+      left: 0;
+    }
+  }
+  .li-header2 {
+    float: left;
+    width: 33%;
+
+    &:hover a::before {
+      right: 0;
+      left: 0;
+    }
+
+  }
+
+  a {
+    color: #848484;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px 0;
+    display: block;
+    position: relative;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #cbd987;
+    }
+
+    &::before {
+      content: "";
+      transition: all 0.4s ease-in-out;
+      position: absolute;
+      right: 50%;
+      left: 50%;
+      bottom: 0;
+      height: 2px;
+      background-color: #cbd987;
+    }
+
+    &:hover::before {
+      right: 0;
+      left: 0;
+    }
+  }
+
+  span {
+    display: block;
+  }
+
+
+}
+
+
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+}
+
+th, td {
+  padding: 10px;
+}
+.td{
+  padding: 10px;
+}
+
+thead th {
+  text-align:center;
+}
+tbody tr:nth-of-type(odd) {
+  background: #e0e0e0;
+}
+
+
+/*
+- - - Responsivise at breakpoint - - - - */
+@media (max-width: 600px) {
+  	  /* make tds into single column full width rows */
+			tr,td {
+				display: block;
+				width: 100%;
+         padding: 5px;
+			}
+
+       /* hide table head */
+      thead {
+				display: none;
+	  	}
+
+		  /* place data attribute before td as a label */
+
+      th tbody {
+          border-collapse: collapse;
+        display:block;
+      }
+      tbody tr {
+        margin-bottom:20px;
+        border-bottom: 10px solid #222222;
+        display:block;
+     }
+
+
+
+
+}
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+    width: 80px;
+    margin-left: 50px
+}
