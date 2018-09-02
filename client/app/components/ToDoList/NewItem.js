@@ -33,6 +33,7 @@ class ToDoList extends Component {
     this.state = {
       data: [],
       userId:'',
+      timestamp:Date.now(),
             itemId:'0',
             item: '',
             listId:'',
@@ -113,6 +114,7 @@ class ToDoList extends Component {
   if(f.checkValidity()) {
     const{
       userId,
+      timestamp,
             itemId,
             item,
             listId,
@@ -129,6 +131,7 @@ class ToDoList extends Component {
     },
     body:JSON.stringify({
       userId: userId,
+      timestamp:timestamp,
            itemId:itemId,
            item:item,
            listId: listId,
@@ -145,6 +148,7 @@ class ToDoList extends Component {
                             listId:'',
                             userId:'',
                             itemId:'0',
+                            timestamp:Date.now(),
                             item:'',
                             time:'',
                             phoneNumber:''
@@ -204,6 +208,7 @@ this.setState({
             token,
             userId,
             itemId,
+            timestamp,
             item,
             listId,
             time,
@@ -255,7 +260,7 @@ this.setState({
 
     <div class="sign-div">
       <input class="sign-text input-sign" type="text" id="time"
-        name="time" required placeholder=" " pattern="^[0-9].*(d|D|H|h|M|m)" value={time} onChange={this.onTextboxChangetime}/>
+        name="time" required placeholder=" " pattern="^[0-9]*(d|D|H|h|M|m)" value={time} onChange={this.onTextboxChangetime}/>
       <label class="sign-label" for="time">Time</label>
       <div class="requirements sign-div">
         Time should be a number and a letter such as d(day),h(hour) and m(minute).
