@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+// @import 'css-loader';
 @import 'vendor/normalize';
 @import 'vendor/custom';
 .icon-arrow{
@@ -8,4 +8,53 @@
    //   align-items: center;
    //   height: 40px ;
    //   width: 40px;
+}
+
+ @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300');
+$chars : 16;
+$duration : .3s;
+$bounce : cubic-bezier(.4,1.2,.75,.9);
+$scale : 4000;
+
+// html, body {
+//   height: 100%;
+//   overflow: hidden;
+//   user-select: none;
+// }
+
+.body-Welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(#a5c507, #a5c507);
+}
+
+.h1-Welcome {
+  padding-top: 140px;
+  font: 500 105px/1 Alegreya Sans, monospace;
+  white-space: nowrap;
+  color: whitesmoke;
+}
+
+
+.span-Welcome {
+  display: inline-block;
+  animation: stretch $chars*$duration $bounce infinite;
+  transform-origin: center;
+
+  @for $i from 1 through $chars {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $i*$duration;
+    }
+  }
+}
+@keyframes stretch {
+  5% {
+    transform: scaleX($scale);
+    opacity: .1;
+  }
+  15% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }
