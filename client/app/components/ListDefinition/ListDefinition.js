@@ -27,8 +27,7 @@ class ListDefinition extends Component {
       listError:'',
 
     };
-       this.onTextboxChangelistName = this.onTextboxChangelistName.bind(this);
-       this.onSave = this.onSave.bind(this);
+
        this.onLogout = this.onLogout.bind(this);
   }
 
@@ -63,48 +62,6 @@ class ListDefinition extends Component {
 
 
 
-    onTextboxChangelistName(event){
-      this.setState({
-        listName: event.target.value,
-      });
-    }
-
-  onSave() {
-    const{
-            listId,
-            listName
-    } = this.state;
-
-    this.setState({
-      isLoading:true,
-    })
-    fetch('/api/account/listDefinition', { method: 'POST',
-    headers:{
-      'Content-Type' : 'application/json'
-    },
-    body:JSON.stringify({
-           listId: listId,
-           listName:listName
-             }), })
-      .then(res => res.json())
-      .then(json => {
-
-          if(json.success){
-            this.setState({
-                            listError: json.message,
-                            isLoading: false,
-                            listId:'0',
-                            listName:'',
-            });
-          } else {
-            this.setState({
-              listError: json.message,
-              isLoading: false
-            });
-          }
-
-      });
-  }
 
 onLogout(){
   this.setState({
@@ -137,6 +94,34 @@ this.setState({
 }
 }
 
+listview(){
+  fetch('/api/account/getlistDefinition', { method: 'GET' ,
+  headers: {'Content-Type': 'application/json'},
+  })
+
+  .then(res => res.json())
+  .then(json => {
+    const lists = json.message;
+
+const listhtml=  document.getElementById("listDef");
+listhtml.innerHTML += '<tr >'+
+  '<th>List Name</th>'+
+'</tr>';
+      for(let i=0;i<lists.length;i++){
+        console.log(lists[i].listName);
+  listhtml.innerHTML +=
+      '<tr >'+
+
+      '<td>'+lists[i].listName+'</td>'+
+
+          '</tr>'
+
+
+};
+
+    });
+  }
+
 
 
 
@@ -165,24 +150,17 @@ this.setState({
 
         <div>
 
+          {document.onload = this.listview()}
+
           <div>
             <Header2 />
-
-            {
-              (listError) ? (
-                <p>{listError}</p>
-              ) : (null)
-            }
-            <form>
-
-              <label>List Name:</label>
-              <input type="text" placeholder="List Name"
-                value={listName} onChange={this.onTextboxChangelistName}/><br /><br />
+            <button ><a href="/newList">New</a></button>
 
 
-            <button onClick={this.onSave} class="button2">Save</button>
-            </form>
 
+            <table cellpadding="0" align = "center" cellspacing="0" width="560px" >
+              <tbody id = "listDef" align = "center"></tbody>
+  </table>
           </div>
 
         </div>
