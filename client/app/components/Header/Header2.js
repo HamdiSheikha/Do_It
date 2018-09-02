@@ -1,25 +1,3 @@
-// import React from 'react';
-//
-// import { Link } from 'react-router-dom';
-//
-// const Header2 = () => (
-//   <header>
-//     <div id="menu-nav">
-//   <div id="navigation-bar">
-//     <ul>
-//       <li><a href="/" class="navbarLogo"><span >Home</span></a></li>
-//       <li><a href="/listdefinition" class="navbarAbout"><span>List Definition</span></a></li>
-//       <li><a href="/signup" class="navbarSignUp"><span>Log Out</span></a></li>
-//
-//     </ul>
-//   </div>
-// </div>
-//       </header>
-// );
-//
-// export default Header2;
-
-
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 
