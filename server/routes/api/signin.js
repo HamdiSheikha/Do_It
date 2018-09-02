@@ -113,7 +113,8 @@ module.exports = (app) => {
           return res.send({
 
             success:true,
-            message:'Hello '+user.firstName + " " + user.lastName + "\n" +" Email: " +email ,
+            message:'Hello '+user.firstName + " " + user.lastName ,
+            mail: "Email: " +email ,
             token: doc._id
           })
 
@@ -142,7 +143,7 @@ UserSession.find({
   }else{
     return res.send({
       success:true,
-      message:'Good'
+      message: "Good" ,
     });
 };
 });
@@ -180,6 +181,7 @@ app.post('/api/account/todolist',(req, res, next) => {
     userId,
     itemId,
     item,
+    timestamp,
     listId,
     time,
     phoneNumber,
@@ -201,6 +203,7 @@ app.post('/api/account/todolist',(req, res, next) => {
       newToDoList.listId      = listId;
       newToDoList.phoneNumber = phoneNumber;
       newToDoList.time        = time;
+      newToDoList.timestamp   = timestamp;
 
       newToDoList.save((err, item) =>{
         if(err) {
@@ -249,7 +252,36 @@ app.post('/api/account/todolist',(req, res, next) => {
 
 });
 
+app.delete('/api/account/deletetodolist/:id', function(req, res, next) {
+  console.log(req.params.id);
+  console.log("hi");
+	  ToDoList.remove({"itemId": req.params.id},function (err,remove) {
+	    if (err) return next(err);
+		    res.json(remove);
 
+
+	  });
+	});
+
+
+  app.put('/api/account/updatetodolist/:id', function(req, res, next) {
+
+    ToDoList.update({
+      "itemId":req.params.id
+    }, req.body.set, function (err, put) {
+      if (err) return next(err);
+      res.json({
+        "put": put
+      });
+    });
+  });
+
+app.delete('/api/account/deletodolist',(req, res, next) => {
+    ToDoList.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+    });
+});
 
 
 
@@ -319,7 +351,6 @@ app.get('/api/account/getlist',(req, res, next) => {
 
     console.log(list_users.userId);
   ToDoList.find({'userId':list_users.userId },(err, list_view) => {
-    // console.log("LIST 3"+list_view);
 
     if(err) {
       return res.send({
@@ -334,4 +365,40 @@ app.get('/api/account/getlist',(req, res, next) => {
       });
     });
   });
+
+
+  app.get('/api/account/getlistDefinition',(req, res, next) => {
+    const {body} = req;
+    const{
+      userId,
+    } = body;
+
+    UserSession.find({},(err, list_users) => {
+      const userSession = list_users[list_users.length-1];
+      console.log(userSession);
+      if(err) {
+        return res.send({
+          success: false,
+          message: 'Error for getting user session id'
+        });
+      }
+      list_users = list_users.pop()
+
+      console.log(list_users.userId);
+    ListDefinition.find({'userId':list_users.userId },(err, list_view) => {
+
+      if(err) {
+        return res.send({
+          success: false,
+          message: 'Error'
+        });
+      }
+      return res.send({
+        success:true,
+        message: list_view
+          });
+        });
+      });
+    });
+
 };
