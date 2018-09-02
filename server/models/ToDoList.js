@@ -32,7 +32,11 @@ const ToDoListSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     default: ''
-  }
+  },
+  timestamp: {
+    type: Date,
+    
+  },
 });
 ToDoListSchema.plugin(autoIncrement.mongoosePlugin);
 module.exports = mongoose.model('ToDoList', ToDoListSchema);
