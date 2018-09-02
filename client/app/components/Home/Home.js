@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import Header2 from '../Header/Header2';
 import Header from '../Header/Header';
+import Welcome from '../Welcome/Welcome';
 
 
 import {
@@ -17,13 +18,6 @@ import {
   setInStorage,
 } from '../../Utils/storage';
 
-
-
-
-
-
-
-
 class Home extends Component {
 
   constructor(props) {
@@ -34,6 +28,7 @@ class Home extends Component {
       token: '',
       signUpError:'',
       signInError:'',
+      EmailMsg:'',
       signInEmail:'',
       signInPassword: '',
       signUpFirstName:'',
@@ -114,22 +109,28 @@ class Home extends Component {
 
           if(json.success){
             setInStorage('the_main_app', { token: json.token});
+
             this.setState({
+
               signInError: json.message,
+              EmailMsg:json.mail,
               isLoading: false,
               signInEmail:'',
               signInPassword:'',
               token: json.token,
             });
+            this.props.history.push('/Welcome');
+
           } else {
             this.setState({
               signInError: json.message,
               isLoading: false
             });
           }
-
       });
+
     }
+
   }
   onLogout(){
   this.setState({
@@ -170,7 +171,8 @@ this.setState({
       token,
       signInEmail,
       signInPassword,
-      signInError
+      signInError,
+      EmailMsg
     } = this.state;
     if(isLoading){
       return(<div><p>Loading...</p></div>);
@@ -210,7 +212,8 @@ this.setState({
 
             </div>
 
-            <button onClick={this.onSignIn} class="btn-login btn-3 btn-3e ">Sign In</button>
+            <button onClick={this.onSignIn} class="btn-login btn-3 btn-3e "
+              >Sign In</button>
 <div class="icon-arrow"></div>
             </form>
 
@@ -221,17 +224,21 @@ this.setState({
       )
     }
     return (
+      // this.props.history.push('/Welcome');
 
-      <div>
+      <div >
         <Header2 />
-
 
         {
           (signInError) ? (
             <p>{signInError}</p>
           ) : (null)
         }
-
+        {
+          (EmailMsg) ? (
+            <p><b>{EmailMsg}</b></p>
+          ) : (null)
+        }
 
 
 
